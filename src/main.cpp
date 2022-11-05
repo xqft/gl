@@ -2,10 +2,16 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+void glfw_error_callback(int error, const char* desc) {
+    std::cerr << "Error " << error << " : " << desc << std::endl;
+}
+
 int main() {
     std::cout << "Hello world" << std::endl;
 
+    glfwSetErrorCallback(glfw_error_callback);
     glfwInit();
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
