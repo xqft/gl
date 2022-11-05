@@ -15,8 +15,6 @@ file(GLOB_RECURSE SOURCE_FILES
 file(GLOB_RECURSE HEADER_FILES
     ${CMAKE_SOURCE_DIR}/src/*.hpp)
 
-set(VENDORS vendor/glfw vendor/glad)
-
 add_subdirectory(vendor/glfw ${CMAKE_SOURCE_DIR}/lib/glfw)
 add_subdirectory(vendor/glad ${CMAKE_SOURCE_DIR}/lib/glad)
 
