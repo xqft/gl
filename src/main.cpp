@@ -1,10 +1,9 @@
 #include <iostream>
+#include <optional>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <optional>
 
 #include "application/application.hpp"
-
 
 int main() {
     std::optional<app::pack> opt_package = app::start();
@@ -14,7 +13,7 @@ int main() {
     }
     app::pack package = opt_package.value();
 
-    app::loop(package.window);
+    app::loop(package);
 
     app::finish();
     return 0;

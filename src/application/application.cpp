@@ -14,12 +14,12 @@ namespace app {
         return package;
     }
 
-    void loop(GLFWwindow *window) {
-        while (!glfwWindowShouldClose(window)) {
+    void loop(pack package) {
+        while (!glfwWindowShouldClose(package.window)) {
             glClearColor(0.129f, 0.129f, 0.129f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
-            glfwSwapBuffers(window);
+            glfwSwapBuffers(package.window);
             glfwPollEvents();
         }
     }

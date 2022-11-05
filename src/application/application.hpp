@@ -8,6 +8,6 @@ namespace app {
     };
 
     std::optional<pack> start();
-    void loop(GLFWwindow* window);
+    void loop(pack package);
     void finish();
 }
