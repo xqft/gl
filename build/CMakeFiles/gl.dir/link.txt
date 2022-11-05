@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/gl.dir/src/main.cpp.o -o gl  ../lib/glfw/src/libglfw3.a ../lib/glad/libglad.a -lpthread /usr/lib/librt.so -lm -ldl 
