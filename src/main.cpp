@@ -7,12 +7,6 @@
 #include "graphics/camera.hpp"
 #include "graphics/shader.hpp"
 
-//temp
-void cam_behaviour(app::Context& context)
-{
-    
-}
-
 int main() 
 {
     int code = 0;
@@ -22,10 +16,7 @@ int main()
     #endif
     std::cout << "Started." << std::endl;
 
-    std::optional context = std::make_optional(app::start());
-    if (context->has_value()) {
-        context.value()->camera->behaviour = cam_behaviour;
-
+    if (auto context = app::start()) {
         float vertices[] = {
             // Vertices         // Colors
              0.5f,  0.5f, 0.0f, 0.86f, 0.81f, 0.92f,
@@ -55,9 +46,8 @@ int main()
         glEnableVertexAttribArray(0); 
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
         glEnableVertexAttribArray(1); 
-
-
-        app::loop(context->value(), [&] () {
+        
+        app::loop(context.value(), [&] () {
             program.use();
             glBindVertexArray(VAO);
             glDrawArrays(GL_TRIANGLES, 0, 6);

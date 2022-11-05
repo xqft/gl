@@ -1,3 +1,4 @@
+#include <iostream>
 #include <optional>
 #include <functional>
 
@@ -37,7 +38,6 @@ namespace app
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             context.calculate_dt();
-            context.camera->behaviour(context);
 
             if (proc) proc();
 
@@ -48,6 +48,7 @@ namespace app
 
     void finish() 
     {
+        std::cout << "Terminating..." << std::endl;
         glfwTerminate();
     }
 }

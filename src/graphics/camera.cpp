@@ -4,8 +4,9 @@
 
 namespace graphics
 {
-    glm::mat4 Camera::lookat()
+    void Camera::move(glm::vec3 deltapos)
     {
-        return glm::lookAt(this->position, this->target, this->up);
+        position += deltapos;
+        lookat = glm::lookAt(position, target, up);
     }
 }
