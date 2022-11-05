@@ -1,13 +1,16 @@
 #pragma once
 #include <GLFW/glfw3.h>
 
-struct Camera; // Ugly circular dependency fix :p
+namespace graphics { struct Camera; } // Ugly circular dependency fix :p
 
-struct Context 
+namespace app
 {
-    GLFWwindow* window;
-    float delta_time = 0;
-    Camera* camera;
+    struct Context 
+    {
+        GLFWwindow* window;
+        float delta_time = 0;
+        graphics::Camera* camera;
 
-    void calculate_dt();
-};
+        void calculate_dt();
+    };
+}

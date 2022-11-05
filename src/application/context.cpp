@@ -2,9 +2,12 @@
 
 #include "context.hpp"
 
-void Context::calculate_dt()
+namespace app
 {
-    static float old_time = 0;
-    this->delta_time = glfwGetTime() - old_time;
-    old_time = glfwGetTime();
+    void Context::calculate_dt()
+    {
+        static float old_time = 0;
+        this->delta_time = glfwGetTime() - old_time;
+        old_time = glfwGetTime();
+    }
 }

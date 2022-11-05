@@ -5,13 +5,15 @@
 
 #include <application/context.hpp>
 
-struct Camera
-{
-    glm::vec3 position  = glm::zero<glm::vec3>();
-    glm::vec3 target    = glm::vec3(0.0f, 0.0f, -1.0f);
-    glm::vec3 up        = glm::vec3(0.0f, 1.0f, 0.0f);
+namespace graphics {
+    struct Camera
+    {
+        glm::vec3 position  = glm::zero<glm::vec3>();
+        glm::vec3 target    = glm::vec3(0.0f, 0.0f, -1.0f);
+        glm::vec3 up        = glm::vec3(0.0f, 1.0f, 0.0f);
 
-    void (*behaviour)(Context&) = nullptr;
-    
-    glm::mat4 lookat();
-};
+        void (*behaviour)(app::Context&) = nullptr;
+        
+        glm::mat4 lookat();
+    };
+}

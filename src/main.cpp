@@ -7,7 +7,7 @@
 #include "graphics/camera.hpp"
 
 //temp
-void cam_behaviour(Context& context)
+void cam_behaviour(app::Context& context)
 {
     
 }

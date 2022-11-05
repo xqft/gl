@@ -13,6 +13,7 @@
 
 namespace app 
 {
+    using namespace graphics;
     std::optional<Context> start() 
     {
         GLFWwindow* window = graphics::init();
