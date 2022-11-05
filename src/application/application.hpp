@@ -1,4 +1,5 @@
 #include <optional>
+#include <functional>
 #include <GLFW/glfw3.h>
 
 namespace app {
@@ -8,6 +9,6 @@ namespace app {
     };
 
     std::optional<pack> start();
-    void loop(pack package);
+    void loop(pack package, std::function<void()>);
     void finish();
 }

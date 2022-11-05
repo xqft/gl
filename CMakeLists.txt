@@ -7,6 +7,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 # for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
 
+### Compile flags ###
+
+# https://stackoverflow.com/questions/34948142/gcc-wall-pedantic-wextra-in-visual-studio
+if(CMAKE_COMPILER_IS_GNUCXX)
+    # "-save-temps" required for dseight/vscode-disasexpl
+    set(CMAKE_CXX_FLAGS "-save-temps -Wall -Wextra -pedantic-errors")
+endif(CMAKE_COMPILER_IS_GNUCXX)
+
 ### Directory paths ###
 
 set(VENDOR_DIR ${CMAKE_SOURCE_DIR}/vendor)
@@ -42,5 +50,4 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
     ${VENDOR_DIR}/glfw/include
     ${DEPS_DIR}/glad/include)
 
-# "-save-temps" required for dseight/vscode-disasexpl
-target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -save-temps -Wall -Wextra -pedantic-errors -Werror)
+target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE ${CMAKE_CXX_FLAGS})

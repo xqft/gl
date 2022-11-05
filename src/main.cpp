@@ -13,7 +13,9 @@ int main() {
     }
     app::pack package = opt_package.value();
 
-    app::loop(package);
+    app::loop(package, [] () {
+        std::cout << "Looping!" << std::endl;
+    });
 
     app::finish();
     return 0;

@@ -1,4 +1,6 @@
 #include <optional>
+#include <functional>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 #include "application.hpp"
@@ -14,10 +16,12 @@ namespace app {
         return package;
     }
 
-    void loop(pack package) {
+    void loop(pack package, std::function<void()> proc) {
         while (!glfwWindowShouldClose(package.window)) {
             glClearColor(0.129f, 0.129f, 0.129f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
+
+            if (proc) proc();
 
             glfwSwapBuffers(package.window);
             glfwPollEvents();

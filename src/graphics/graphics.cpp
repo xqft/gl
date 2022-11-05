@@ -11,8 +11,8 @@ namespace grphs {
     }
 
     static void GLAPIENTRY gl_callback(GLenum source, GLenum type, GLuint id,
-                    GLenum severity, __attribute__((unused)) GLsizei length, const GLchar* message,
-                    __attribute__((unused)) const void* userParam)
+                    GLenum severity, GLsizei, const GLchar* message,
+                    const void*)
     {
         std::cerr << "GL CALLBACK : " <<
             "type = " << std::hex << type << 
