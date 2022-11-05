@@ -5,7 +5,7 @@
 
 #include "graphics.hpp"
 
-namespace grphs 
+namespace graphics 
 {
     static void glfw_callback(int error, const char* desc) 
     {

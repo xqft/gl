@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.16.3)
+#project(gl VERSION 0.1.0 LANGUAGES C CXX)
 project(gl VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -17,15 +18,9 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 
 ### Directory paths ###
 
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 set(VENDOR_DIR ${CMAKE_SOURCE_DIR}/vendor)
 set(DEPS_DIR ${CMAKE_SOURCE_DIR}/deps)
-
-### Source files ###
-
-file(GLOB_RECURSE SOURCE_FILES
-    ${CMAKE_SOURCE_DIR}/src/*.cpp)
-file(GLOB_RECURSE HEADER_FILES
-    ${CMAKE_SOURCE_DIR}/src/*.hpp)
 
 ### Dependencies ###
 
@@ -42,7 +37,8 @@ add_subdirectory(${VENDOR_DIR}/glm ${DEPS_DIR}/glm)
 
 ### Application ###
 
-add_executable(${CMAKE_PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
+add_executable(${CMAKE_PROJECT_NAME} ${CXX_SOURCE_FILES}) 
+include(sources)
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC glfw glad glm)
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC

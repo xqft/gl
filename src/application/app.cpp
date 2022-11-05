@@ -3,14 +3,14 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "application.hpp"
+#include "app.hpp"
 #include "graphics/graphics.hpp"
 
 namespace app 
 {
     std::optional<pack> start() 
     {
-        GLFWwindow* window = grphs::init().value_or(nullptr);
+        GLFWwindow* window = graphics::init().value_or(nullptr);
         if (window == nullptr)
             return std::nullopt;
 
