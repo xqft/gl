@@ -5,8 +5,10 @@
 
 #include "graphics.hpp"
 
-namespace grphs {
-    static void glfw_callback(int error, const char* desc) {
+namespace grphs 
+{
+    static void glfw_callback(int error, const char* desc) 
+    {
         std::cerr << "GLFW CALLBACK " << error << " : " << desc << std::endl;
     }
 
@@ -23,11 +25,13 @@ namespace grphs {
             (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "") << std::endl;
     }
 
-    static void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+    static void framebuffer_size_callback(GLFWwindow* window, int width, int height) 
+    {
         glViewport(0, 0, width, height);
     }
 
-    std::optional<GLFWwindow*> init() {
+    std::optional<GLFWwindow*> init() 
+    {
         std::cout << "Starting graphics..." << std::endl;
 
         glfwSetErrorCallback(glfw_callback);

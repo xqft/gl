@@ -4,9 +4,11 @@
 #include <functional>
 #include <GLFW/glfw3.h>
 
-namespace app {
+namespace app 
+{
     /// A 'package' that contains the application's essential objects
-    struct pack {
+    struct pack 
+    {
         GLFWwindow* window;
     };
 

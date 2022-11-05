@@ -5,7 +5,8 @@
 
 #include "application/application.hpp"
 
-int main() {
+int main() 
+{
     std::optional<app::pack> opt_package = app::start();
     if (!opt_package.has_value()) {
         app::finish();

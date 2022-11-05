@@ -6,8 +6,10 @@
 #include "application.hpp"
 #include "graphics/graphics.hpp"
 
-namespace app {
-    std::optional<pack> start() {
+namespace app 
+{
+    std::optional<pack> start() 
+    {
         GLFWwindow* window = grphs::init().value_or(nullptr);
         if (window == nullptr)
             return std::nullopt;
@@ -16,8 +18,10 @@ namespace app {
         return package;
     }
 
-    void loop(pack package, std::function<void()> proc) {
-        while (!glfwWindowShouldClose(package.window)) {
+    void loop(pack package, std::function<void()> proc) 
+    {
+        while (!glfwWindowShouldClose(package.window)) 
+        {
             glClearColor(0.129f, 0.129f, 0.129f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
@@ -28,7 +32,8 @@ namespace app {
         }
     }
 
-    void finish() {
+    void finish() 
+    {
         glfwTerminate();
     }
 }
