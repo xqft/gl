@@ -16,12 +16,12 @@ namespace graphics
                     GLenum severity, GLsizei, const GLchar* message,
                     const void*)
     {
-        std::cerr << "GL CALLBACK : " <<
-            "type = " << std::hex << type << 
-            ", severity =  " << severity << 
-            ", message = " << message << 
-            ", source = " << source <<
-            ", id = " << id <<
+        std::cerr << "GL CALLBACK : " << std::endl <<
+            "type = " << std::hex << type << std::endl <<
+            "severity =  " << severity << std::endl <<
+            "message = " << message << std::endl <<
+            "source = " << source << std::endl <<
+            "id = " << id << std::endl <<
             (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "") << std::endl;
     }
 
@@ -38,7 +38,7 @@ namespace graphics
         glfwInit();
 
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
         GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
