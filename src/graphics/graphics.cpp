@@ -34,7 +34,7 @@ namespace grphs {
         glfwInit();
 
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
         GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
@@ -42,14 +42,14 @@ namespace grphs {
         {
             std::cout << "Failed to create GLFW window" << std::endl;
             glfwTerminate();
-            return {};
+            return std::nullopt;
         }
         glfwMakeContextCurrent(window);
 
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
         {
             std::cout << "Failed to initialize GLAD" << std::endl;
-            return {};
+            return std::nullopt;
         } 
         glEnable(GL_DEBUG_OUTPUT);
         glDebugMessageCallback(gl_callback, 0);

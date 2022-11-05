@@ -10,7 +10,7 @@ namespace app {
     std::optional<pack> start() {
         GLFWwindow* window = grphs::init().value_or(nullptr);
         if (window == nullptr)
-            return {};
+            return std::nullopt;
 
         pack package = {window};
         return package;

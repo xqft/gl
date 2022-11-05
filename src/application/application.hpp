@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 
 namespace app {
-    /// A 'package' with the application's essential objects
+    /// A 'package' that contains the application's essential objects
     struct pack {
         GLFWwindow* window;
     };
