@@ -1,0 +1,60 @@
+#include <iostream>
+#include <optional>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include "graphics.hpp"
+
+namespace grphs {
+    std::optional<GLFWwindow*> init() {
+        std::cout << "Starting graphics..." << std::endl;
+
+        glfwSetErrorCallback(glfw_callback);
+        glfwInit();
+
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+        GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+        if (window == NULL)
+        {
+            std::cout << "Failed to create GLFW window" << std::endl;
+            glfwTerminate();
+            return {};
+        }
+        glfwMakeContextCurrent(window);
+
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+        {
+            std::cout << "Failed to initialize GLAD" << std::endl;
+            return {};
+        } 
+        glEnable(GL_DEBUG_OUTPUT);
+        glDebugMessageCallback(gl_callback, 0);
+
+        glViewport(0, 0, 800, 600);
+        glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+        return window;
+    }
+    
+    static void glfw_callback(int error, const char* desc) {
+        std::cerr << "GLFW CALLBACK " << error << " : " << desc << std::endl;
+    }
+
+    static void GLAPIENTRY gl_callback(GLenum source, GLenum type, GLuint id,
+                    GLenum severity, GLsizei length, const GLchar* message,
+                    const void* userParam)
+    {
+        std::cerr << "GL CALLBACK : " <<
+            "type = " << std::hex << type << 
+            ", severity =  " << severity << 
+            ", message = " << message << 
+            (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "") << std::endl;
+    }
+
+    static void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+        glViewport(0, 0, width, height);
+    }
+}
