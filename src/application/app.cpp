@@ -8,26 +8,26 @@
 
 namespace app 
 {
-    std::optional<pack> start() 
+    std::optional<Context> start() 
     {
-        GLFWwindow* window = graphics::init().value_or(nullptr);
+        GLFWwindow* window = graphics::init();
         if (window == nullptr)
             return std::nullopt;
 
-        pack package = {window};
-        return package;
+        Context context = { window };
+        return context;
     }
 
-    void loop(pack package, std::function<void()> proc) 
+    void loop(Context context, std::function<void()> proc) 
     {
-        while (!glfwWindowShouldClose(package.window)) 
+        while (!glfwWindowShouldClose(context.window)) 
         {
             glClearColor(0.129f, 0.129f, 0.129f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT);
 
             if (proc) proc();
 
-            glfwSwapBuffers(package.window);
+            glfwSwapBuffers(context.window);
             glfwPollEvents();
         }
     }

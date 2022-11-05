@@ -4,28 +4,19 @@
 #include <GLFW/glfw3.h>
 
 #include "application/app.hpp"
-/*#include "ecs/ecs.hpp"
-
-struct position : ecs::component<position> 
-{
-    float x, y, z;
-};
-struct velocity : ecs::component<velocity>
-{
-    float dx, dy, dz;
-};
-*/
 
 int main() 
 {
-    std::cout << "started" << std::endl;
-    std::optional<app::pack> opt_package = app::start();
-    if (!opt_package.has_value()) {
-        app::finish();
+    #ifdef DEBUG
+    std::cout << "-- DEBUG MODE --" << std::endl;
+    #endif
+    std::cout << "Started." << std::endl;
+
+    std::optional context = std::make_optional(app::start());
+    if (!context->has_value())
         return -1;
-    }
-    app::pack package = opt_package.value();
-    app::loop(package, [] () {
+
+    app::loop(context->value(), [] () {
         //std::cout << "Looping!" << std::endl;
     });
 

@@ -7,12 +7,12 @@
 namespace app 
 {
     /// A 'package' that contains the application's essential objects
-    struct pack 
+    struct Context 
     {
         GLFWwindow* window;
     };
 
-    std::optional<pack> start();
-    void loop(pack package, std::function<void()>);
+    std::optional<Context> start();
+    void loop(Context context , std::function<void()>);
     void finish();
 }

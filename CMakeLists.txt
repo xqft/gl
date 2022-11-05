@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.16.3)
-#project(gl VERSION 0.1.0 LANGUAGES C CXX)
 project(gl VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -7,14 +6,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED true)
 
 # for clangd
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
-
-### Compile flags ###
-
-# https://stackoverflow.com/questions/34948142/gcc-wall-pedantic-wextra-in-visual-studio
-if(CMAKE_COMPILER_IS_GNUCXX)
-    # "-save-temps" required for dseight/vscode-disasexpl
-    set(CMAKE_CXX_FLAGS "-save-temps -Wall -Wextra -pedantic-errors")
-endif(CMAKE_COMPILER_IS_GNUCXX)
 
 ### Directory paths ###
 
@@ -35,10 +26,23 @@ set(GLAD_GENERATOR "cpp")
 
 add_subdirectory(${VENDOR_DIR}/glm ${DEPS_DIR}/glm)
 
+### Compile flags ###
+set(DEBUG_COMPILE_OPTIONS "-g3" "-ggdb" "-DDEBUG")
+set(RELEASE_COMPILE_OPTIONS)
+
 ### Application ###
 
-add_executable(${CMAKE_PROJECT_NAME} ${CXX_SOURCE_FILES}) 
+add_executable(${CMAKE_PROJECT_NAME}) 
 include(sources)
+
+if(MSVC)
+else()
+    # "-save-temps" required for dseight/vscode-disasexpl
+    # https://stackoverflow.com/questions/34948142/gcc-wall-pedantic-wextra-in-visual-studio
+    target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC "-save-temps" "-Wall" "-Wextra" "-pedantic-errors")
+    target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC "$<$<CONFIG:DEBUG>:${DEBUG_COMPILE_OPTIONS}>")
+    target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC "$<$<CONFIG:RELEASE>:${RELEASE_COMPILE_OPTIONS}>")
+endif()
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC glfw glad glm)
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC

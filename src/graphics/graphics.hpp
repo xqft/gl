@@ -5,5 +5,5 @@
 
 namespace graphics 
 { // graphics related functions
-    std::optional<GLFWwindow*> init();
+    GLFWwindow* init();
 }

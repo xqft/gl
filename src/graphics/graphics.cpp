@@ -30,7 +30,7 @@ namespace graphics
         glViewport(0, 0, width, height);
     }
 
-    std::optional<GLFWwindow*> init() 
+    GLFWwindow* init()
     {
         std::cout << "Starting graphics..." << std::endl;
 
@@ -46,14 +46,14 @@ namespace graphics
         {
             std::cout << "Failed to create GLFW window" << std::endl;
             glfwTerminate();
-            return std::nullopt;
+            return nullptr;
         }
         glfwMakeContextCurrent(window);
 
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
         {
             std::cout << "Failed to initialize GLAD" << std::endl;
-            return std::nullopt;
+            return nullptr;
         } 
         glEnable(GL_DEBUG_OUTPUT);
         glDebugMessageCallback(gl_callback, 0);
