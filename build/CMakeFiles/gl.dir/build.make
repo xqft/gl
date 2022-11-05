@@ -98,6 +98,10 @@ gl_EXTERNAL_OBJECTS =
 
 gl: CMakeFiles/gl.dir/src/main.cpp.o
 gl: CMakeFiles/gl.dir/build.make
+gl: ../lib/glfw/src/libglfw3.a
+gl: ../lib/glad/libglad.a
+gl: /usr/lib/librt.so
+gl: /usr/lib/libm.so
 gl: CMakeFiles/gl.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/loqft/cpp/gl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable gl"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gl.dir/link.txt --verbose=$(VERBOSE)

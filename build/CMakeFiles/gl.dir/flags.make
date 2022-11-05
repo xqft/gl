@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/home/loqft/cpp/gl/vendor/glfw/include -I/home/loqft/cpp/gl/lib/glad/include/glad -I/home/loqft/cpp/gl/lib/glad/include
 
 CXX_FLAGS = -save-temps -Wall -Wextra -pedantic-errors -Werror -std=gnu++17
 
