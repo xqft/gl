@@ -7,7 +7,7 @@
 
 int main() 
 {
-    #ifdef DEBUG
+    #ifndef NDEBUG
     std::cout << "-- DEBUG MODE --" << std::endl;
     #endif
     std::cout << "Started." << std::endl;

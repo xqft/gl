@@ -27,7 +27,7 @@ set(GLAD_GENERATOR "cpp")
 add_subdirectory(${VENDOR_DIR}/glm ${DEPS_DIR}/glm)
 
 ### Compile flags ###
-set(DEBUG_COMPILE_OPTIONS "-g3" "-ggdb" "-DDEBUG")
+set(DEBUG_COMPILE_OPTIONS "-g3" "-ggdb" "-DNDEBUG")
 set(RELEASE_COMPILE_OPTIONS)
 
 ### Application ###
@@ -36,6 +36,7 @@ add_executable(${CMAKE_PROJECT_NAME})
 include(sources)
 
 if(MSVC)
+    target_compile_options(${CMAKE_PROJECT_NAME} PUBLIC "/Wall")
 else()
     # "-save-temps" required for dseight/vscode-disasexpl
     # https://stackoverflow.com/questions/34948142/gcc-wall-pedantic-wextra-in-visual-studio
