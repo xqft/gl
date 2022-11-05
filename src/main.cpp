@@ -7,7 +7,7 @@
 #include "graphics/camera.hpp"
 
 //temp
-void cam_behaviour()
+void cam_behaviour(Context& context)
 {
     
 }
@@ -23,7 +23,7 @@ int main()
 
     std::optional context = std::make_optional(app::start());
     if (context->has_value()) {
-        context.value()->camera.behaviour = cam_behaviour;
+        context.value()->camera->behaviour = cam_behaviour;
 
         app::loop(context->value(), [] () {
             //std::cout << "Looping!" << std::endl;

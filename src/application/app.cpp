@@ -19,7 +19,7 @@ namespace app
         if (window == nullptr)
             return std::nullopt;
 
-        Camera camera;
+        Camera* camera = new Camera;
 
         Context context = { 
             .window = window, 
@@ -36,7 +36,7 @@ namespace app
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             context.calculate_dt();
-            context.camera.behaviour();
+            context.camera->behaviour(context);
 
             if (proc) proc();
 
