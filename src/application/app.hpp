@@ -13,6 +13,6 @@ namespace app
     };
 
     std::optional<Context> start();
-    void loop(Context context , std::function<void()>);
+    void loop(Context& context , std::function<void()>);
     void finish();
 }

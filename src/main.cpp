@@ -4,21 +4,32 @@
 #include <GLFW/glfw3.h>
 
 #include "application/app.hpp"
+#include "graphics/camera.hpp"
+
+//temp
+void cam_behaviour()
+{
+    
+}
 
 int main() 
 {
+    int code = 0;
+
     #ifndef NDEBUG
     std::cout << "-- DEBUG MODE --" << std::endl;
     #endif
     std::cout << "Started." << std::endl;
 
     std::optional context = std::make_optional(app::start());
-    if (!context->has_value())
-        return -1;
+    if (context->has_value()) {
+        Camera::behaviour = cam_behaviour;
 
-    app::loop(context->value(), [] () {
-        //std::cout << "Looping!" << std::endl;
-    });
+        app::loop(context->value(), [] () {
+            //std::cout << "Looping!" << std::endl;
+        });
+    } else { code = -1; }
 
     app::finish();
+    return code;
 }
