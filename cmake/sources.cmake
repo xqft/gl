@@ -3,4 +3,5 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     src/application/app.cpp
     src/graphics/graphics.cpp
     src/graphics/camera.cpp
+    src/graphics/context.cpp
 )

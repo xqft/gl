@@ -1,5 +1,6 @@
 #include <optional>
 #include <functional>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/vec3.hpp>
@@ -18,7 +19,12 @@ namespace app
         if (window == nullptr)
             return std::nullopt;
 
-        Context context = { window };
+        Camera camera;
+
+        Context context = { 
+            .window = window, 
+            .camera = camera 
+        };
         return context;
     }
 
@@ -29,7 +35,8 @@ namespace app
             glClearColor(0.129f, 0.129f, 0.129f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            Camera::behaviour();
+            context.calculate_dt();
+            context.camera.behaviour();
 
             if (proc) proc();
 
