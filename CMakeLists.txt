@@ -15,8 +15,8 @@ file(GLOB_RECURSE SOURCE_FILES
 file(GLOB_RECURSE HEADER_FILES
     ${CMAKE_SOURCE_DIR}/src/*.hpp)
 
-add_subdirectory(vendor/glfw ${CMAKE_SOURCE_DIR}/lib/glfw)
-add_subdirectory(vendor/glad ${CMAKE_SOURCE_DIR}/lib/glad)
+add_subdirectory(vendor/glfw ${LIB_DIR}/glfw)
+add_subdirectory(vendor/glad ${LIB_DIR}/glad)
 
 add_executable(${CMAKE_PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES})
 
@@ -25,4 +25,5 @@ target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC
     ${VENDOR_DIR}/glfw/include
     ${LIB_DIR}/glad/include/glad)
 
+# "-save-temps" required for dseight/vscode-disasexpl
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE -save-temps -Wall -Wextra -pedantic-errors -Werror)
